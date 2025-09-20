@@ -5,3 +5,8 @@
 .precomp
 lib/.precomp
 
+node_modules
+dist
+build
+*.env
+

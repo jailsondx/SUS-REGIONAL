@@ -1,0 +1,35 @@
+.menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.menubar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.menubar-item {
+  margin: 0;
+}
+
+.menubar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  transition: color 0.3s ease;
+}
+
+.menubar-link:hover {
+  color: #ddd;
+}

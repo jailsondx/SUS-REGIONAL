@@ -1,0 +1,10 @@
+.consultas-container {
+  display: flex;
+  min-height: calc(100vh - 60px); /* Ajusta para o MenuBar fixo */
+}
+
+.consultas-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 250px; /* Largura do sidebar */
+}
