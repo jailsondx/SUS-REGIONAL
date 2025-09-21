@@ -3,6 +3,11 @@ import './MenuBar.css';
 const MenuBar = () => {
   return (
     <nav className="menubar">
+      <span>
+<img src='/imgs/SUS-REGIONAL.png' className='icon-menubar'></img>
+      </span>
+
+      <span>
       <ul className="menubar-list">
         <li className="menubar-item">
           <a href="/" className="menubar-link">Início</a>
@@ -14,6 +19,10 @@ const MenuBar = () => {
           <a href="/sobre" className="menubar-link">Sobre</a>
         </li>
       </ul>
+      </span>
+      
+      <span></span>
+
     </nav>
   );
 };

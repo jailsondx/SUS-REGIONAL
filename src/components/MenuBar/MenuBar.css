@@ -1,12 +1,20 @@
 .menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
-  padding: 15px 0;
+  height: 80px;
+  padding: 0 50px 0 20px; /* Top, right, bottom, left */ 
+  background-color: whitesmoke;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+}
+
+.icon-menubar{
+  height: 60px;
 }
 
 .menubar-list {
@@ -23,13 +31,17 @@
 }
 
 .menubar-link {
-  color: #fff;
+  color: #333;
   text-decoration: none;
   font-size: 18px;
   font-family: Arial, sans-serif;
   transition: color 0.3s ease;
+  padding: 10px;
 }
 
 .menubar-link:hover {
-  color: #ddd;
+  color: white;
+  background-color: #5eaa61;
+  padding: 10px;
+  border-radius: 10px;
 }
