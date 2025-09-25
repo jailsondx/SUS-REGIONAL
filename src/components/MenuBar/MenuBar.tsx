@@ -4,7 +4,7 @@ const MenuBar = () => {
   return (
     <nav className="menubar">
       <span>
-<img src='/imgs/SUS-REGIONAL.png' className='icon-menubar'></img>
+  <img src='/imgs/SUS-REGIONAL.png' className='icon-menubar'></img>
       </span>
 
       <span>

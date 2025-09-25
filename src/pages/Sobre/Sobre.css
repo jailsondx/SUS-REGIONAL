@@ -1,0 +1,39 @@
+.container-sobre{
+    display: flex;
+    justify-content: center;
+    height: 90dvh;
+}
+
+.div-img-alexandra{
+    min-width: 300px;
+    height: 300px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.Alexandra{
+    width: 100%;
+    background-color: lightblue;
+}
+
+.texto-sobre{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.line-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+.txt100{
+    font-size: 52px;
+}

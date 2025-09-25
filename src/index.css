@@ -4,10 +4,32 @@ font-family: 'Roboto', sans-serif;
 }
 
 
+.error-message{
+    color: red;
+    font-size: 14px;
+}
+
 .title{
     font-size: 24px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
     text-align: center;
+}
+
+.button-green{
+    background-color: #5eaa61;
+    color: white;
+    width: 15%;
+    min-width: 100px;
+    border: none;
+    padding: 20px 0 20px 0; /* Top, right, bottom, left */
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-green:hover{
+    background-color: #4e8a51;
 }

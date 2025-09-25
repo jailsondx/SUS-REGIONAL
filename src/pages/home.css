@@ -1,5 +1,6 @@
 .container-home{
     display: flex;
+    justify-content: center;
     height: 90dvh;
 }
 
@@ -14,7 +15,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 90%;
     height: 100%;
     border-radius: 16px;
     padding: 0 16px 16px 16px; /* Top, right, bottom, left */

@@ -3,8 +3,8 @@ import './VisualizarTratamentos.css';
 const VisualizarTratamentos = () => {
   // Dados fictícios para demonstração
   const tratamentos = [
-    { id: 1, nome: 'Fisioterapia', inicio: '2025-09-01', medico: 'Dr. Carlos Lima', progresso: '60%' },
-    { id: 2, nome: 'Terapia Ocupacional', inicio: '2025-09-10', medico: 'Dra. Ana Costa', progresso: '30%' },
+    { id: 1, nome: 'Fisioterapia', inicio: '01/09/2025', medico: 'Dr. Carlos Lima', progresso: '60%' },
+    { id: 2, nome: 'Terapia Ocupacional', inicio: '10/08/2025', medico: 'Dra. Ana Costa', progresso: '30%' },
   ];
 
   return (

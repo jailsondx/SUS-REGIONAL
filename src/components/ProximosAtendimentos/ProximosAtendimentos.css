@@ -22,7 +22,21 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.atendimento-item p {
+.atendimento-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   margin: 5px 0;
   font-family: Arial, sans-serif;
+}
+
+
+.div-icon-consultas {
+  width: 70px;
+  padding-right: 2%;
+}
+
+
+.icon-consultas {
+  width: 100%;
 }

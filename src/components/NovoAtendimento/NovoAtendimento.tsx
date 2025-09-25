@@ -4,31 +4,36 @@ import './NovoAtendimento.css';
 
 const NovoAtendimento = () => {
   const [formData, setFormData] = useState({
-    id_usuario: 1, // Substitua pelo ID real do usuário logado
     data: '',
-    horario: '',
+    hora: '',
     local: '',
     especialidade: '',
   });
   const [locais, setLocais] = useState<{ id: number; nome_local: string }[]>([]);
   const [especialidades, setEspecialidades] = useState<{ id: number; tipo_especialidade: string }[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string[]>([]); // Alterado para array de strings
 
-  const URL_API = import.meta.env.VITE_API_URL; // Substitua pela URL real da sua API no Railway
+  const URL_API = import.meta.env.VITE_API_URL;
 
+  // Função para adicionar uma nova mensagem de erro
+  const addError = (message: string) => {
+    setError((prevErrors) => [...prevErrors, message]);
+  };
 
+  // Função para limpar erros (opcional)
+  const clearErrors = () => {
+    setError([]);
+  };
+
+  // Funções para buscar locais e especialidades
   const fetchLocais = async () => {
     try {
       const response = await axios.get(`${URL_API}/locaisAtendimento`);
-      setLocais(response.data); // Assume que o backend retorna um array de objetos { id, nome }
-      setLoading(false);
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        setError(err.response?.data?.error || 'Erro ao carregar os locais');
-      } else {
-        //setError('Erro ao carregar os locais');
-      }
+      setLocais(response.data);
+    } catch {
+      addError('Erro ao carregar os locais'); // Usa addError em vez de setError
+    } finally {
       setLoading(false);
     }
   };
@@ -36,14 +41,10 @@ const NovoAtendimento = () => {
   const fetchEspecialidades = async () => {
     try {
       const response = await axios.get(`${URL_API}/Especialidades`);
-      setEspecialidades(response.data); // Assume que o backend retorna um array de objetos { id, nome }
-      setLoading(false);
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        setError(err.response?.data?.error || 'Erro ao carregar as especialidades');
-      } else {
-        //setError('Erro ao carregar os locais');
-      }
+      setEspecialidades(response.data);
+    } catch {
+      addError('Erro ao carregar as especialidades'); // Usa addError em vez de setError
+    } finally {
       setLoading(false);
     }
   };
@@ -60,33 +61,51 @@ const NovoAtendimento = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    clearErrors(); // Limpa erros anteriores antes de tentar enviar
+
+    const localSelecionado = locais.find((local) => local.nome_local === formData.local);
+    const especialidadeSelecionada = especialidades.find(
+      (especialidade) => especialidade.tipo_especialidade === formData.especialidade
+    );
+
+    if (!localSelecionado || !especialidadeSelecionada) {
+      addError('Selecione um local e uma especialidade válidos!');
+      return;
+    }
+
+    const dadosParaEnviar = {
+      ...formData,
+      local: localSelecionado.id,
+      especialidade: especialidadeSelecionada.id,
+    };
+
     try {
-      // Enviar os dados do formulário ao backend
-      await axios.post(`${URL_API}/NovoAtendimento`, formData);
-      console.log('Dados do agendamento:', formData);
-      alert('Agendamento enviado com sucesso!');
-      // Resetar o formulário após envio
+      await axios.post(`${URL_API}/NovoAtendimento`, dadosParaEnviar);
+      alert('Agendamento de consulta solicitada com sucesso!');
       setFormData({
-        id_usuario: 1, // Substitua pelo ID real do usuário logado
         data: '',
-        horario: '',
+        hora: '',
         local: '',
         especialidade: '',
       });
     } catch (err) {
       console.error(err);
-      if (axios.isAxiosError(err)) {
-        alert(err.response?.data?.error || 'Erro ao enviar o agendamento');
-      } else {
-        alert('Erro ao enviar o agendamento');
-      }
+      addError('Erro ao enviar o agendamento');
     }
   };
 
   return (
     <div className="novo-atendimento">
       <h2>Marcar Novo Atendimento</h2>
-      {error && <p className="error-message">{error}</p>}
+      {error.length > 0 && (
+        <div className="error-messages">
+          {error.map((err, index) => (
+            <p key={index} className="error-message">
+              {err}
+            </p>
+          ))}
+        </div>
+      )}
       {loading ? (
         <p>Carregando...</p>
       ) : (
@@ -103,12 +122,12 @@ const NovoAtendimento = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="horario">Horário:</label>
+            <label htmlFor="hora">Horário:</label>
             <input
               type="time"
-              id="horario"
-              name="horario"
-              value={formData.horario}
+              id="hora"
+              name="hora"
+              value={formData.hora}
               onChange={handleChange}
               required
             />

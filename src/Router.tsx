@@ -4,6 +4,7 @@ import Consultas from './pages/Consulta/Consultas';
 import ProximosAtendimentos from './components/ProximosAtendimentos/ProximosAtendimentos';
 import NovoAtendimento from './components/NovoAtendimento/NovoAtendimento';
 import VisualizarTratamentos from './components/VisualizarTratamentos/VisualizarTratamentos';
+import Sobre from './pages/Sobre/Sobre';
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="novo-atendimento" element={<NovoAtendimento />} />
         <Route path="visualizar-tratamentos" element={<VisualizarTratamentos />} />
       </Route>
+      <Route path="/sobre" element={<Sobre />} />
       {/* 
        <Route path="/sobre" element={<Sobre />} />
       */}

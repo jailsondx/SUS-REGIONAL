@@ -1,8 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './home.css'
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
 
+  const BtnAgendeAqui = () => {
+    navigate('/consultas');
+  }
 
   return (
     <div className='container-home'>
@@ -12,6 +17,7 @@ const Home: React.FC = () => {
           <label className='title-bold'>Agilidade para sua especialidade</label>
           <label>Facilitamos o acesso a diversas especialidades médicas através do SUS, com apoio no agendamento de consultas e exames de forma gratuita.
 Cardiologia, ginecologia, pediatria, ortopedia, dermatologia e muito mais — tudo ao seu alcance, com acolhimento e informação.</label>
+          <button className='button-green' onClick={BtnAgendeAqui}>Agende Aqui</button>
         </div>
         <div>
           <img src="/imgs/dupla-medicos.png" alt="Logo" className='logo-home' />

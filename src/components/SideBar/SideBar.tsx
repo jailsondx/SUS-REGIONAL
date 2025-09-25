@@ -4,7 +4,7 @@ import './SideBar.css';
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <h2 className="sidebar-title">Menu</h2>
+      <h2 className="sidebar-title">Tratamentos e Consultas</h2>
       <ul className="sidebar-list">
         <li className="sidebar-item">
           <NavLink
